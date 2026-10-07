@@ -1,0 +1,26 @@
+@media print{
+ :root{color-scheme:light!important}
+ html,body{background:#fff!important;color:#172737!important}
+ @page{background:#fff}
+ #printReport{font-family:"Segoe UI",Arial,sans-serif;font-size:10pt;line-height:1.5}
+ #printReport .report-header{border-bottom:2px solid #257caa;padding-bottom:3mm;margin-bottom:4mm;break-inside:avoid}
+ #printReport .report-kicker{font-size:8pt;font-weight:700;letter-spacing:.7px;color:#216b90;margin:0 0 2mm}
+ #printReport h1{font-size:23pt;line-height:1.2;letter-spacing:-.3px;margin:0 0 2mm;overflow-wrap:anywhere}
+ #printReport h2{font-size:12pt;line-height:1.35;margin:4mm 0 2mm;break-after:avoid}
+ #printReport p{font-size:10pt;line-height:1.5;white-space:pre-wrap;margin:0 0 3mm;color:#263f4d;overflow-wrap:anywhere;orphans:3;widows:3}
+ #printReport section{break-inside:auto}
+ #printReport .report-design{margin:4mm 0;break-inside:avoid}
+ #printReport .report-design img{display:block;width:100%;height:auto;max-height:99mm;object-fit:contain;border:1px solid #a8b7c2;border-radius:2mm;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ #printReport figcaption,#printReport .report-caption{font-size:8pt;color:#5e7180;line-height:1.4;margin:1.5mm 0 3mm}
+ #printReport .report-resources p{font-size:9pt;border-left:2px solid #257caa;padding:2mm 3mm;background:#eef5f8;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ #printReport .report-program{break-before:page}
+ #printReport .report-program>h2:first-child{margin-top:0}
+ #printReport pre.report-code{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;tab-size:2;font:9pt/1.6 Consolas,"Courier New",monospace;padding:3mm;border:1px solid #a8b7c2;background:#f4f7f9;color:#172737;break-inside:auto;box-decoration-break:clone;print-color-adjust:exact;-webkit-print-color-adjust:exact;orphans:3;widows:3}
+ #printReport table{font-size:9pt;width:100%;border-collapse:collapse;margin:2mm 0 4mm;table-layout:fixed;break-inside:auto}
+ #printReport th,#printReport td{border:1px solid #a8b7c2;padding:1.2mm 2mm;overflow-wrap:anywhere;vertical-align:top}
+ #printReport th{background:#e8f1f6;font-weight:700;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ #printReport th:last-child{width:16mm}
+ #printReport thead{display:table-header-group}
+ #printReport tr{break-inside:avoid}
+ #printReport .report-footnote{font-size:8pt;color:#627784;border-top:1px solid #a8b7c2;padding-top:2mm;margin-top:2mm}
+}

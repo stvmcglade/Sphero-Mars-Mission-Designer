@@ -1,0 +1,17 @@
+const CERTIFICATE_STORAGE_KEY='mars-mission-rank-certificates-v1';
+let rankCertificates=Object.create(null),selectedCertificateRank=1;
+try{const saved=JSON.parse(localStorage.getItem(CERTIFICATE_STORAGE_KEY)||'{}');for(let rank=1;rank<=4;rank++){const record=saved?.[rank];if(record&&typeof record.name==='string'&&record.name.length<=60&&/^\d{4}-\d{2}-\d{2}$/.test(record.date))rankCertificates[rank]={name:record.name,date:record.date}}}catch{}
+function saveCertificates(){localStorage.setItem(CERTIFICATE_STORAGE_KEY,JSON.stringify(rankCertificates))}
+function recordRankCertificates(){const now=new Date(),date=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');for(let rank=1;rank<=4;rank++)if(M.rankProgress(rank,completedRanks).complete&&!rankCertificates[rank])rankCertificates[rank]={name:state.teamName.trim(),date};try{saveCertificates()}catch{}}
+function certificateElement(rank,name){
+ const progress=M.rankProgress(rank,completedRanks),record=rankCertificates[rank],host=document.createElement('article');host.className='rank-certificate';
+ const add=(tag,text,className)=>{const el=document.createElement(tag);el.textContent=text;if(className)el.className=className;host.append(el);return el};
+ add('p','MARS MISSION DESIGN LAB','certificate-kicker');add('div','★','certificate-emblem');add('h2','Certificate of Achievement','certificate-title');add('p','Presented to','certificate-label');add('h3',name||'Your name','certificate-recipient');add('p','For completing all three design and Python missions in','certificate-label');add('h3','Rank '+rank+' · '+progress.name,'certificate-rank');add('p',progress.missions.map(id=>M.challenges[id].name).join('  /  '),'certificate-missions');
+ const meta=add('div',undefined,'certificate-meta');meta.textContent='';for(const text of ['3 missions completed','550 points earned','Awarded '+new Date(record.date+'T12:00:00').toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})]){const el=document.createElement('span');el.textContent=text;meta.append(el)}
+ add('p','Recognising mission planning, terrain navigation, scientific actions and successful Python programming.','certificate-skills');add('p','Independent classroom achievement certificate issued by Mars Mission Design Lab.','certificate-footnote');return host;
+}
+function renderCertificatePreview(){const name=$('certificateName').value.trim();$('certificatePreview').replaceChildren(certificateElement(selectedCertificateRank,name));$('printCertificateBtn').disabled=!name;$('certificateNameError').textContent=name?'':'Enter the student or team name for the certificate.'}
+function showRankCertificate(rank){if(!M.rankProgress(rank,completedRanks).complete)return;recordRankCertificates();selectedCertificateRank=rank;$('certificateName').value=rankCertificates[rank].name||state.teamName||'';renderCertificatePreview();showDialog('certificateDialog')}
+function initCertificates(){
+ $('certificateName').addEventListener('input',renderCertificatePreview);$('printCertificateBtn').onclick=async()=>{const name=$('certificateName').value.trim();if(!name){$('certificateName').focus();return}rankCertificates[selectedCertificateRank].name=name;try{saveCertificates()}catch{}$('printCertificate').replaceChildren(certificateElement(selectedCertificateRank,name));if(document.fonts?.ready)await document.fonts.ready;document.body.dataset.printMode='certificate';window.print()};window.addEventListener('afterprint',()=>delete document.body.dataset.printMode);
+}

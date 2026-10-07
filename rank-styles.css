@@ -1,0 +1,35 @@
+.engineering-path{padding:18px 22px;margin-bottom:20px;border:1px solid var(--line);border-radius:12px;background:#0f1b28ee}
+.engineering-path .card-heading{margin-bottom:14px;flex-wrap:wrap}
+.engineering-path h2{font-size:19px;margin:0;color:#f8c38c}
+#rankProgress{font-size:11px;color:#b9cbd9}
+.rank-levels{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.rank-level{display:grid;grid-template-columns:30px 1fr;gap:4px 10px;text-align:left;padding:13px;background:#142333}
+.rank-level>span{grid-row:1/3;font-size:20px;color:#7fa3bc;align-self:center}
+.rank-level strong{font-size:12px}
+.rank-level small{font-size:8px;letter-spacing:.7px;color:#9bb2c2}
+.rank-level.current{border-color:#f6aa71;background:#f47b2016}
+.rank-level.current>span{color:#ffc290}
+.rank-level.passed>span,.rank-level.passed small{color:#6fe0c4}
+.mission-rank{display:inline-block;margin:15px 0 8px;padding:5px 8px;border:1px solid #efaf7a66;border-radius:5px;color:#ffd0a8;font-size:10px}
+.mission-name-row{display:flex;align-items:center;gap:10px}
+.mission-name-row input{flex:1;min-width:0}
+.completion-star{color:#ffd16c;font-size:23px;line-height:1;order:-1}
+.rank-level.passed strong{color:#ffe0a2}
+.course-points{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#pointsTotal{color:#ffce84;border:1px solid #bd92566b;background:#f47b2015;border-radius:7px;padding:8px 12px;font-size:15px;white-space:nowrap}
+.rank-card{border:1px solid #3d566a;border-radius:9px;background:#142333;padding:13px;min-width:0}
+.rank-card.current{border-color:#f6aa71}
+.rank-card.passed{border-color:#5ebca4}
+.rank-card h3{font-size:13px;margin:0 0 7px;line-height:1.5;color:#e9f4f7}
+.rank-card.passed h3{color:#ffd391}
+.rank-card>p{font-size:10px;color:#abc1d0;margin:0 0 10px}
+.course-mission{display:block;width:100%;text-align:left;font-size:11px;line-height:1.5;background:#0c1b29;border:1px solid #304b62;padding:8px 10px;margin:7px 0;min-height:63px}
+.course-mission small{display:block;font-size:9px;color:#9bb9cd;font-weight:400;margin-top:3px}
+.course-mission.current{border-color:#f0b577;background:#f47b2015}
+.course-mission.passed{color:#ffd391}
+.course-mission.passed small{color:#81dfc6}
+.certificate-button{width:100%;font-size:10px;line-height:1.5;margin-top:7px;background:#18394a;color:#a8e5e5;border-color:#42847f}
+.certificate-button:disabled{opacity:.6;font-weight:400}
+@media(max-width:660px){.rank-card{padding:10px}.rank-card h3{font-size:12px}.course-mission{padding:8px;font-size:10px}.course-points{gap:8px}}
+@media(max-width:800px){.rank-levels{grid-template-columns:1fr 1fr}.engineering-path{padding:15px}}
+@media(max-width:400px){.rank-level{padding:10px;grid-template-columns:22px 1fr}.rank-level strong{font-size:11px}}

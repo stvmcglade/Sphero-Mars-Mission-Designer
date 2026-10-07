@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "missionName": "Red Planet Pathfinder",
+  "teamName": "",
+  "challenge": "samples",
+  "scienceQuestion": "",
+  "designNotes": "",
+  "code": "# Search. Sample. Send.\n# Design your terrain, then write your own rover program.\n# 0 = north, 90 = east, 180 = south, 270 = west.\n# Distance = speed * 1.28 * seconds.\n\nspeed = 70\nsay(\"Beginning our Mars mission\")\n# Example only: complete your own route and science actions.\nroll(speed, 90, 1)\n\n# Add movement and collect() at each rock sample.\n# At the relay: flash_colour_code(\"orange-blue\")\n# At a weather station: observe()\n# At the sample cache: collect() to deposit samples.\n# At a landing zone: land() confirms touchdown (Rank 1).\n# At the return capsule: launch() after caching two samples and signalling (Rank 4).\n# Finish at your return destination.\nstop()",
+  "objects": [
+    {
+      "id": "rover-1",
+      "type": "rover",
+      "label": "Mars rover",
+      "scale": 1,
+      "rotation": 0,
+      "x": 130,
+      "y": 540
+    },
+    {
+      "id": "landing-1",
+      "type": "landing",
+      "label": "Landing zone",
+      "scale": 1,
+      "rotation": 0,
+      "x": 130,
+      "y": 540
+    },
+    {
+      "id": "sample-1",
+      "type": "sample",
+      "label": "Rock sample",
+      "scale": 1,
+      "rotation": 0,
+      "x": 340,
+      "y": 440
+    },
+    {
+      "id": "sample-2",
+      "type": "sample",
+      "label": "Rock sample",
+      "scale": 1,
+      "rotation": 0,
+      "x": 690,
+      "y": 230
+    },
+    {
+      "id": "relay-1",
+      "type": "relay",
+      "label": "Comms relay",
+      "scale": 1,
+      "rotation": 0,
+      "x": 825,
+      "y": 410
+    },
+    {
+      "id": "cache-1",
+      "type": "cache",
+      "label": "Sample cache",
+      "scale": 1,
+      "rotation": 0,
+      "x": 840,
+      "y": 555
+    },
+    {
+      "id": "rock-1",
+      "type": "rock",
+      "label": "Rock field",
+      "scale": 1,
+      "rotation": 0,
+      "x": 495,
+      "y": 350
+    },
+    {
+      "id": "sand-1",
+      "type": "sand",
+      "label": "Sand trap",
+      "scale": 1,
+      "rotation": 0,
+      "x": 610,
+      "y": 530
+    },
+    {
+      "id": "crater-1",
+      "type": "crater",
+      "label": "Impact crater",
+      "scale": 1,
+      "rotation": 0,
+      "x": 270,
+      "y": 210
+    },
+    {
+      "id": "583183cb-937c-4dc6-b770-b4e4143447e2",
+      "type": "sensor",
+      "x": 560,
+      "y": 180,
+      "scale": 1,
+      "rotation": 0,
+      "label": "Atmosphere station"
+    },
+    {
+      "id": "e7b7ab96-bf12-4b4a-99ec-e016e15f06b8",
+      "type": "dust",
+      "x": 760,
+      "y": 120,
+      "scale": 1,
+      "rotation": 0,
+      "label": "Dust zone"
+    }
+  ],
+  "route": []
+}

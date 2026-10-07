@@ -1,0 +1,26 @@
+const fs=require('node:fs');function edit(file,from,to){const s=fs.readFileSync(file,'utf8');if(!s.includes(from))throw Error('Missing text in '+file+': '+from.slice(0,60));fs.writeFileSync(file,s.replace(from,to))}
+edit('index.html','<link rel="stylesheet" href="report-styles.css">','<link rel="stylesheet" href="report-styles.css"><link rel="stylesheet" href="certificate-styles.css">');
+edit('index.html','<span id="rankProgress" role="status"></span>','<div class="course-points"><strong id="pointsTotal" role="status">0 points</strong><span id="rankProgress" role="status"></span></div>');
+edit('index.html','Pass each level with your own design and Python program. Ranks are earned in order; you can practise any mission. Completed missions keep their design and code in this browser. ★ marks a completed mission.','Complete three missions in each rank using your own design and Python program. Earn 100, 150 and 200 points, plus a 100-point rank bonus and certificate. Ranks advance in order; you can practise any mission. ★ marks saved completed work. Earlier mission completions still count.');
+edit('index.html','<section id="printReport" hidden></section>','<dialog id="certificateDialog" aria-labelledby="certificateDialogTitle"><div class="dialog-header"><div><p class="eyebrow">Your engineering achievement</p><h2 id="certificateDialogTitle">Your rank certificate</h2></div><button data-close class="quiet-button">Close ✕</button></div><div class="certificate-toolbar"><label for="certificateName">Student / team name<input id="certificateName" maxlength="60" required autocomplete="name"></label><button id="printCertificateBtn" class="primary-button">Print / save PDF</button></div><p id="certificateNameError" role="status"></p><div id="certificatePreview"></div></dialog>\n<section id="printCertificate" hidden></section><section id="printReport" hidden></section>');
+edit('index.html','<script src="app.js">','<script src="certificates.js"></script><script src="app.js">');
+edit('app.js',"'LEVEL '+M.challenges[state.challenge].rank+' · '","'RANK '+M.challenges[state.challenge].rank+' · MISSION '+M.challenges[state.challenge].mission+'/3 · '");
+edit('app.js',"energy=lastCodeEvidence?lastCodeEvidence.energy:M.energy(state);", "energy=lastCodeEvidence?lastCodeEvidence.energy:M.energy(state),energyLimit=challenge.energyLimit||100;");
+edit('app.js',"energy+' / 100'","energy+' / '+energyLimit");
+edit('app.js',"classList.toggle('over',energy>100)","classList.toggle('over',energy>energyLimit)");
+edit('app.js',"Math.min(100,energy)+'%'","Math.min(100,energy/energyLimit*100)+'%'");
+edit('app.js',"energy>100?'#e38171'","energy>energyLimit?'#e38171'");
+edit('app.js',"(c.rank?'Rank '+c.rank+' · '+c.rankName+' / ':'')", "(c.rank?'Rank '+c.rank+' · Mission '+c.mission+'/3 / ':'')");
+edit('app.js',"v.src='briefings/'+state.challenge+'.webm';v.poster='briefings/'+state.challenge+'-poster.png';","const video=c.video||state.challenge;v.src='briefings/'+video+'.webm';v.poster='briefings/'+video+'-poster.png';");
+edit('app.js',"track.src='briefings/'+state.challenge+'.vtt'","track.src='briefings/'+video+'.vtt'");
+edit('app.js',"26-second concept example · ambient space music · volume / mute in video controls · design your own layout and code","Rank concept example · ambient space music · use video volume / mute controls · follow this mission’s requirements below");
+edit('app.js',"initCoding();restoreCompletedEvidence();","initCertificates();initCoding();restoreCompletedEvidence();");
+edit('app.js',"try{await buildMissionReport();window.print()}","try{delete document.body.dataset.printMode;await buildMissionReport();window.print()}");
+edit('rover-python.js',"if(run.energy>100)throw new PythonError(line,'Rover energy exceeded 100. Shorten the coded route.')","if(run.energy>(M.challenges[s.challenge].energyLimit||100))throw new PythonError(line,'Rover energy exceeded '+(M.challenges[s.challenge].energyLimit||100)+'. Shorten the coded route.')");
+edit('report.js',"const level=M.challenges[design.challenge],rank=M.engineeringRank(completedRanks);", "const level=M.challenges[design.challenge],rank=M.engineeringRank(completedRanks),score=M.curriculumScore(completedRanks);");
+edit('report.js',"'Level '+level.rank+' · '+level.rankName+'\\n'", "'Rank '+level.rank+' · Mission '+level.mission+'/3 · '+level.name+'\\n'");
+edit('report.js',"M.rankOrder.filter(isMissionComplete).length+'/4 levels passed in this browser'", "score.total+' points · '+score.missions+'/12 missions · '+score.ranks+'/4 ranks complete'");
+edit('report.js',"M.energy(design)+' / 100\\nLatest test:'","M.energy(design)+' / '+(level.energyLimit||100)+'\\nLatest test:'");
+edit('report.js',"test.energy+' / 100 energy'","test.energy+' / '+(level.energyLimit||100)+' energy'");
+edit('server.cjs',"'rank-styles.css','engineering-ranks.js'","'rank-styles.css','certificate-styles.css','certificates.js','engineering-ranks.js'");
+console.log('Twelve-mission selector, points, certificate UI and mission video mapping updated.');
